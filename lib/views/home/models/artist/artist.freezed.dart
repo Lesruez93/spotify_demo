@@ -21,11 +21,7 @@ Artist _$ArtistFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$Artist {
   String get name => throw _privateConstructorUsedError;
-  String get type => throw _privateConstructorUsedError;
-  String get uri => throw _privateConstructorUsedError;
-  String get id => throw _privateConstructorUsedError;
-  @JsonKey(name: 'external_urls')
-  Map<String, String> get externalUrls => throw _privateConstructorUsedError;
+  List<AlbumImage> get images => throw _privateConstructorUsedError;
 
   /// Serializes this Artist to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -41,12 +37,7 @@ abstract class $ArtistCopyWith<$Res> {
   factory $ArtistCopyWith(Artist value, $Res Function(Artist) then) =
       _$ArtistCopyWithImpl<$Res, Artist>;
   @useResult
-  $Res call(
-      {String name,
-      String type,
-      String uri,
-      String id,
-      @JsonKey(name: 'external_urls') Map<String, String> externalUrls});
+  $Res call({String name, List<AlbumImage> images});
 }
 
 /// @nodoc
@@ -65,32 +56,17 @@ class _$ArtistCopyWithImpl<$Res, $Val extends Artist>
   @override
   $Res call({
     Object? name = null,
-    Object? type = null,
-    Object? uri = null,
-    Object? id = null,
-    Object? externalUrls = null,
+    Object? images = null,
   }) {
     return _then(_value.copyWith(
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      type: null == type
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
-              as String,
-      uri: null == uri
-          ? _value.uri
-          : uri // ignore: cast_nullable_to_non_nullable
-              as String,
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      externalUrls: null == externalUrls
-          ? _value.externalUrls
-          : externalUrls // ignore: cast_nullable_to_non_nullable
-              as Map<String, String>,
+      images: null == images
+          ? _value.images
+          : images // ignore: cast_nullable_to_non_nullable
+              as List<AlbumImage>,
     ) as $Val);
   }
 }
@@ -102,12 +78,7 @@ abstract class _$$ArtistImplCopyWith<$Res> implements $ArtistCopyWith<$Res> {
       __$$ArtistImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String name,
-      String type,
-      String uri,
-      String id,
-      @JsonKey(name: 'external_urls') Map<String, String> externalUrls});
+  $Res call({String name, List<AlbumImage> images});
 }
 
 /// @nodoc
@@ -124,32 +95,17 @@ class __$$ArtistImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? name = null,
-    Object? type = null,
-    Object? uri = null,
-    Object? id = null,
-    Object? externalUrls = null,
+    Object? images = null,
   }) {
     return _then(_$ArtistImpl(
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      type: null == type
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
-              as String,
-      uri: null == uri
-          ? _value.uri
-          : uri // ignore: cast_nullable_to_non_nullable
-              as String,
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      externalUrls: null == externalUrls
-          ? _value._externalUrls
-          : externalUrls // ignore: cast_nullable_to_non_nullable
-              as Map<String, String>,
+      images: null == images
+          ? _value._images
+          : images // ignore: cast_nullable_to_non_nullable
+              as List<AlbumImage>,
     ));
   }
 }
@@ -158,37 +114,25 @@ class __$$ArtistImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$ArtistImpl implements _Artist {
   const _$ArtistImpl(
-      {required this.name,
-      required this.type,
-      required this.uri,
-      required this.id,
-      @JsonKey(name: 'external_urls')
-      required final Map<String, String> externalUrls})
-      : _externalUrls = externalUrls;
+      {required this.name, required final List<AlbumImage> images})
+      : _images = images;
 
   factory _$ArtistImpl.fromJson(Map<String, dynamic> json) =>
       _$$ArtistImplFromJson(json);
 
   @override
   final String name;
+  final List<AlbumImage> _images;
   @override
-  final String type;
-  @override
-  final String uri;
-  @override
-  final String id;
-  final Map<String, String> _externalUrls;
-  @override
-  @JsonKey(name: 'external_urls')
-  Map<String, String> get externalUrls {
-    if (_externalUrls is EqualUnmodifiableMapView) return _externalUrls;
+  List<AlbumImage> get images {
+    if (_images is EqualUnmodifiableListView) return _images;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableMapView(_externalUrls);
+    return EqualUnmodifiableListView(_images);
   }
 
   @override
   String toString() {
-    return 'Artist(name: $name, type: $type, uri: $uri, id: $id, externalUrls: $externalUrls)';
+    return 'Artist(name: $name, images: $images)';
   }
 
   @override
@@ -197,17 +141,13 @@ class _$ArtistImpl implements _Artist {
         (other.runtimeType == runtimeType &&
             other is _$ArtistImpl &&
             (identical(other.name, name) || other.name == name) &&
-            (identical(other.type, type) || other.type == type) &&
-            (identical(other.uri, uri) || other.uri == uri) &&
-            (identical(other.id, id) || other.id == id) &&
-            const DeepCollectionEquality()
-                .equals(other._externalUrls, _externalUrls));
+            const DeepCollectionEquality().equals(other._images, _images));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, name, type, uri, id,
-      const DeepCollectionEquality().hash(_externalUrls));
+  int get hashCode => Object.hash(
+      runtimeType, name, const DeepCollectionEquality().hash(_images));
 
   /// Create a copy of Artist
   /// with the given fields replaced by the non-null parameter values.
@@ -228,25 +168,14 @@ class _$ArtistImpl implements _Artist {
 abstract class _Artist implements Artist {
   const factory _Artist(
       {required final String name,
-      required final String type,
-      required final String uri,
-      required final String id,
-      @JsonKey(name: 'external_urls')
-      required final Map<String, String> externalUrls}) = _$ArtistImpl;
+      required final List<AlbumImage> images}) = _$ArtistImpl;
 
   factory _Artist.fromJson(Map<String, dynamic> json) = _$ArtistImpl.fromJson;
 
   @override
   String get name;
   @override
-  String get type;
-  @override
-  String get uri;
-  @override
-  String get id;
-  @override
-  @JsonKey(name: 'external_urls')
-  Map<String, String> get externalUrls;
+  List<AlbumImage> get images;
 
   /// Create a copy of Artist
   /// with the given fields replaced by the non-null parameter values.
