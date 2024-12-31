@@ -33,7 +33,7 @@ class SearchField extends StatelessWidget {
             contentPadding: EdgeInsets.symmetric(vertical: 8),
             // Adjust the vertical padding here
 
-            fillColor: Theme.of(context).colorScheme.background,
+            fillColor: Theme.of(context).colorScheme.surface,
             enabledBorder: OutlineInputBorder(
               borderSide: BorderSide(color: Colors.transparent),
               borderRadius: BorderRadius.all(Radius.circular(6.0)),
