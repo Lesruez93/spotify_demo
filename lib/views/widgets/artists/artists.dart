@@ -1,22 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
+import '../../home/controllers/home_controller.dart';
 import '../../home/models/artist/artist.dart';
 
 
 
 
 class ArtistList extends StatelessWidget {
-  final List<Artist> artists;
 
-  const ArtistList({Key? key, required this.artists}) : super(key: key);
+  final HomeController _controller = Get.put(HomeController());
+
+  ArtistList({Key? key, }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-      itemCount: artists.length,
+      controller: _controller.scrollController,
+      itemCount: _controller.artists.length ,
       itemBuilder: (context, index) {
-        final item = artists[index];
-        return ArtistCard(artist: item);
+        final artist = _controller.artists[index];
+        return ArtistCard(artist: artist);
       },
     );
   }

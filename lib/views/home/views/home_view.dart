@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:spotify_demo/views/widgets/artists/artists.dart';
 
+import '../../../utils/utils.dart';
 import '../../widgets/albums/albums.dart';
 import '../../widgets/search_bar/search_bar.dart';
 import '../controllers/home_controller.dart';
@@ -14,7 +15,12 @@ class HomeView extends GetView<HomeController> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return PopScope(
+        onPopInvoked: (bool didPop) => {
+      onWillPop(context),
+    },
+    canPop: false,
+    child:Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
         backgroundColor: Colors.black,
@@ -93,12 +99,12 @@ class HomeView extends GetView<HomeController> {
               }
 
               return controller.selected.value == 0
-                  ? AlbumGrid(albums: controller.albums)
-                  : ArtistList(artists: controller.artists);
+                  ? AlbumGrid()
+                  : ArtistList();
             }),
           ),
         ]),
       ),
-    );
+    ));
   }
 }

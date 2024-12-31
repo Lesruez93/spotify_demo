@@ -1,29 +1,52 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
+import '../../home/controllers/home_controller.dart';
 import '../../home/models/album/album.dart';
 
 class AlbumGrid extends StatelessWidget {
-  final List<Album> albums;
+  final HomeController _controller = Get.put(HomeController());
 
-  const AlbumGrid({Key? key, required this.albums}) : super(key: key);
+  AlbumGrid({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return GridView.builder(
-      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 2,
-        childAspectRatio: 0.75,
-        crossAxisSpacing: 8.0,
-        mainAxisSpacing: 8.0,
-      ),
-      itemCount: albums.length,
-      itemBuilder: (context, index) {
-        final item = albums[index];
-        return AlbumCard(album: item);
-      },
-    );
+    // Start initial fetching of albums
+
+
+    return Obx(() {
+      return Stack(
+        children: [
+           GridView.builder(
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                childAspectRatio: 0.75,
+                crossAxisSpacing: 8.0,
+                mainAxisSpacing: 8.0,
+              ),
+              itemCount: _controller.albums.length,
+              controller: _controller.scrollController,
+              itemBuilder: (context, index) {
+                final album = _controller.albums[index];
+                return AlbumCard(album: album);
+              },
+            ),
+
+          if (_controller.isLoading.value)
+            const Positioned(
+              bottom: 16.0,
+              left: 0,
+              right: 0,
+              child: Center(
+                child: CircularProgressIndicator(),
+              ),
+            ),
+        ],
+      );
+    });
   }
 }
+
 
 class AlbumCard extends StatelessWidget {
   final Album album;
