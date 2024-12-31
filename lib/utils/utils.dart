@@ -28,22 +28,27 @@ Future<bool> checkConnectivity() async {
   }
 }
 
-Future<bool> onWillPop(BuildContext context) async {
-  DateTime now = DateTime.now();
-  if (_lastPressedAt == null ||
-      now.difference(_lastPressedAt!) > Duration(seconds: 2)) {
-    _lastPressedAt = now;
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        backgroundColor: Theme.of(context).colorScheme.onSurfaceVariant,
-        content: Text('Press back again to exit'),
-        duration: Duration(seconds: 2), // Adjust duration as needed
-      ),
-    );
-    return false; // Prevent immediate exit
-  }
-  SystemNavigator.pop();
-  return false; // Allow exit on second press within 2 seconds
+Future<Future> onWillPop(BuildContext context) async {
+  return showDialog(
+    context: context,
+    builder: (context) => AlertDialog(
+      title: const Text('Exit App'),
+      content: const Text('Are you sure'),
+      actions: [
+        TextButton(
+          onPressed: () => Navigator.pop(context, false),
+          child: const Text('Cancel'),
+        ),
+        TextButton(
+          onPressed: () => {
+            Navigator.pop(context, true),
+            SystemNavigator.pop(), //
+          },
+          child: const Text('Exit'),
+        ),
+      ],
+    ),
+  );
 }
 
 DateTime? _lastPressedAt;
