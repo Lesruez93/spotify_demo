@@ -10,7 +10,7 @@ class HomeService {
 
   HomeService() {
     final String accessToken =
-        'BQANSyvbsimktGTHZ0N49tl1zR9Reov76YaMR1tzyUQPEZfYxC45IRxBEYTatlEb-BrtFdVL9JTl4JX6zaPLY-WaGOjMaA0ywgZgZX1EpV9KoTAFGGHXb1ROmPSlKMgWBVvYEqqvw_hLZDnNk_SE_b-kjw16bJ8ccwTLQ0B0_-Nec_v4dsJXLn1-kO0ezUhPiLTzoOYOLurOXRRcBsyofSCSQ3gBDyw1Bdn1Ma3Ybq3YQvE7PrpjWxpBLIjMgbCum1FSxC54fETaN7WluiA-7Iw8gAs_9a3uPqUl9krCuMCf1CrMWrKv5gJgmR3lNNSKmyaQdDNVaPJgdKCtsoJiA_8Y8bQv4RY';
+        'BQBdzgidpInmK64qxx9V7U0U5TMrJtQs6zk8vqCuUz49BVUcJDiiM8-I7c30x3eSWG59GTuWkvzTe7G3CW4dOwLuoC_UxqUogfVcArVqODLxYkMYwLWavClF8SHvX9TEV44I5IZaricTWsmuSZnZIA9H3J1rAGyTMdVbcaO-eGTayQIy6i8Xdx0Yk9NZIs3wS4BThCD4Iva4F-d-TOloGkzUjQ-HdI-NxcYIs-ecBJnl-qRFAOlsAiPCKOOOq7-wipUl9LxxNE9YIPCQDKH2lxS98ybLciW8s1k8Q4JNVsfrAPNRad1-WEfjUrFQl06L-LOfoZXpfBo6DMLEDbQx79oydeKgaO4';
 
     dio = Dio(
       BaseOptions(
@@ -49,7 +49,7 @@ class HomeService {
 
       if (response.statusCode == 200) {
         // Extract and parse album data
-        final items = response.data['albums']['items'] as List;
+        final items = response.data['artists']['items'] as List;
         return items
             .map((json) => Album.fromJson(json as Map<String, dynamic>))
             .toList();

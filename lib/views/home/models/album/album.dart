@@ -1,7 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import '../album_artist/album_artist.dart';
 import '../album_image/album_image.dart';
-import '../artist/artist.dart';
 
 part 'album.freezed.dart';
 part 'album.g.dart';
@@ -15,7 +15,7 @@ class Album with _$Album {
     required String type,
     required String uri,
     required List<AlbumImage> images,
-    required List<Artist> artists,
+    required List<AlbumArtist> artists,
   }) = _Album;
 
   factory Album.fromJson(Map<String, dynamic> json) => _$AlbumFromJson(json);

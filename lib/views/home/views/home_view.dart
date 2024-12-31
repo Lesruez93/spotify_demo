@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:spotify_demo/views/widgets/artists/artists.dart';
 
 import '../../widgets/albums/albums.dart';
 import '../../widgets/search_bar/search_bar.dart';
@@ -37,20 +38,20 @@ class HomeView extends GetView<HomeController> {
                   //Search delay
                   controller.debounce =
                       Timer(const Duration(milliseconds: 200), () {
-                        if (value == '') {
-                          controller.albums.value = [];
-                        }
+                    if (value == '') {
+                      controller.albums.value = [];
+                    }
 
-                        if (value != null && value.isNotEmpty) {
-                          controller.fetchAlbums(value);
-                          // album index is 0 and artists index is 1
-                          if (controller.selected.value == 1) {
-                            controller.fetchArtist(value);
-                          } else {
-                            controller.fetchAlbums(value);
-                          }
-                        }
-                      });
+                    if (value != null && value.isNotEmpty) {
+                      controller.fetchAlbums(value);
+                      // album index is 0 and artists index is 1
+                      if (controller.selected.value == 1) {
+                        controller.fetchArtist(value);
+                      } else {
+                        controller.fetchAlbums(value);
+                      }
+                    }
+                  });
                   return null;
                 },
                 labelText: "Search Albums, Artist",
@@ -61,7 +62,7 @@ class HomeView extends GetView<HomeController> {
               spacing: 5.0,
               children: List<Widget>.generate(
                 2,
-                    (int index) {
+                (int index) {
                   return ChoiceChip(
                     selectedColor: Colors.green,
                     backgroundColor: Colors.black,
@@ -72,8 +73,11 @@ class HomeView extends GetView<HomeController> {
                     ),
                     selected: controller.selected.value == index,
                     onSelected: (bool selected) {
+                      controller.searchQuery.clear(); //clear text field on switch
+
                       controller.selected.value = (selected ? index : null)!;
                       controller.albums.value = [];
+                      // clear albums list
                     },
                   );
                 },
@@ -86,7 +90,9 @@ class HomeView extends GetView<HomeController> {
                 return Center(child: CircularProgressIndicator());
               }
 
-              return AlbumGrid(albums: controller.albums);
+              return controller.selected.value == 0
+                  ? AlbumGrid(albums: controller.albums)
+                  : ArtistList(artists: controller.artists);
             }),
           ),
         ]),

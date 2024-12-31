@@ -1,59 +1,56 @@
 import 'package:flutter/material.dart';
 
-import '../../home/models/album/album.dart';
+import '../../home/models/artist/artist.dart';
+
 
 
 
 class ArtistList extends StatelessWidget {
-  final List<Album> albums;
+  final List<Artist> artists;
 
-  const ArtistList({Key? key, required this.albums}) : super(key: key);
+  const ArtistList({Key? key, required this.artists}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-      itemCount: albums.length,
+      itemCount: artists.length,
       itemBuilder: (context, index) {
-        final item = albums[index];
-        return ArtistCard(album: item);
+        final item = artists[index];
+        return ArtistCard(artist: item);
       },
     );
   }
 }
 
 class ArtistCard extends StatelessWidget {
-  final Album album;
+  final Artist artist;
 
-  const ArtistCard({Key? key, required this.album}) : super(key: key);
+  const ArtistCard({Key? key, required this.artist}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Card(
       color: Colors.transparent,
 
-      child:  ListTile(
-        leading: CircleAvatar(
-          child: Image.network(
-            album.images[0].url,
-            fit: BoxFit.cover,
-            width: double.infinity,
-            loadingBuilder: (BuildContext context, Widget child, ImageChunkEvent? loadingProgress) {
-              if (loadingProgress == null) {
-                return child; // The image is fully loaded.
-              } else {
-                return Center(
-                  child: CircularProgressIndicator(
-                    value: loadingProgress.expectedTotalBytes != null
-                        ? loadingProgress.cumulativeBytesLoaded / (loadingProgress.expectedTotalBytes ?? 1)
-                        : null, // Show indeterminate if total bytes are unknown.
-                  ),
-                );
-              }
-            },
-          ),
+      child:   ListTile(
+        leading: Container(
+      width: 50, // Adjust the width and height for the CircleAvatar size
+      height: 50,
+      decoration: BoxDecoration(
+        shape: BoxShape.circle,
+        image: DecorationImage(
+          image: NetworkImage(artist.images[0].url),
+          fit: BoxFit.cover,
+          onError: (exception, stackTrace) {
+            // Handle the error (optional)
+            print('Image failed to load: $exception');
+          },
+        ),
+      ),
+
         ),
         title:     Text(
-          album.name,
+          artist.name,
           style: const TextStyle(
             fontWeight: FontWeight.bold,
             fontSize: 16,

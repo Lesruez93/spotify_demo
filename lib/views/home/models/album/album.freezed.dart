@@ -21,14 +21,12 @@ Album _$AlbumFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$Album {
   String get name => throw _privateConstructorUsedError;
-  @JsonKey(name: 'release_date')
   String get releaseDate => throw _privateConstructorUsedError;
-  @JsonKey(name: 'release_date_precision')
   String get releaseDatePrecision => throw _privateConstructorUsedError;
   String get type => throw _privateConstructorUsedError;
   String get uri => throw _privateConstructorUsedError;
   List<AlbumImage> get images => throw _privateConstructorUsedError;
-  List<Artist> get artists => throw _privateConstructorUsedError;
+  List<AlbumArtist> get artists => throw _privateConstructorUsedError;
 
   /// Serializes this Album to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -46,12 +44,12 @@ abstract class $AlbumCopyWith<$Res> {
   @useResult
   $Res call(
       {String name,
-      @JsonKey(name: 'release_date') String releaseDate,
-      @JsonKey(name: 'release_date_precision') String releaseDatePrecision,
+      String releaseDate,
+      String releaseDatePrecision,
       String type,
       String uri,
       List<AlbumImage> images,
-      List<Artist> artists});
+      List<AlbumArtist> artists});
 }
 
 /// @nodoc
@@ -105,7 +103,7 @@ class _$AlbumCopyWithImpl<$Res, $Val extends Album>
       artists: null == artists
           ? _value.artists
           : artists // ignore: cast_nullable_to_non_nullable
-              as List<Artist>,
+              as List<AlbumArtist>,
     ) as $Val);
   }
 }
@@ -119,12 +117,12 @@ abstract class _$$AlbumImplCopyWith<$Res> implements $AlbumCopyWith<$Res> {
   @useResult
   $Res call(
       {String name,
-      @JsonKey(name: 'release_date') String releaseDate,
-      @JsonKey(name: 'release_date_precision') String releaseDatePrecision,
+      String releaseDate,
+      String releaseDatePrecision,
       String type,
       String uri,
       List<AlbumImage> images,
-      List<Artist> artists});
+      List<AlbumArtist> artists});
 }
 
 /// @nodoc
@@ -176,7 +174,7 @@ class __$$AlbumImplCopyWithImpl<$Res>
       artists: null == artists
           ? _value._artists
           : artists // ignore: cast_nullable_to_non_nullable
-              as List<Artist>,
+              as List<AlbumArtist>,
     ));
   }
 }
@@ -186,13 +184,12 @@ class __$$AlbumImplCopyWithImpl<$Res>
 class _$AlbumImpl implements _Album {
   const _$AlbumImpl(
       {required this.name,
-      @JsonKey(name: 'release_date') required this.releaseDate,
-      @JsonKey(name: 'release_date_precision')
+      required this.releaseDate,
       required this.releaseDatePrecision,
       required this.type,
       required this.uri,
       required final List<AlbumImage> images,
-      required final List<Artist> artists})
+      required final List<AlbumArtist> artists})
       : _images = images,
         _artists = artists;
 
@@ -202,10 +199,8 @@ class _$AlbumImpl implements _Album {
   @override
   final String name;
   @override
-  @JsonKey(name: 'release_date')
   final String releaseDate;
   @override
-  @JsonKey(name: 'release_date_precision')
   final String releaseDatePrecision;
   @override
   final String type;
@@ -219,9 +214,9 @@ class _$AlbumImpl implements _Album {
     return EqualUnmodifiableListView(_images);
   }
 
-  final List<Artist> _artists;
+  final List<AlbumArtist> _artists;
   @override
-  List<Artist> get artists {
+  List<AlbumArtist> get artists {
     if (_artists is EqualUnmodifiableListView) return _artists;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_artists);
@@ -279,23 +274,20 @@ class _$AlbumImpl implements _Album {
 abstract class _Album implements Album {
   const factory _Album(
       {required final String name,
-      @JsonKey(name: 'release_date') required final String releaseDate,
-      @JsonKey(name: 'release_date_precision')
+      required final String releaseDate,
       required final String releaseDatePrecision,
       required final String type,
       required final String uri,
       required final List<AlbumImage> images,
-      required final List<Artist> artists}) = _$AlbumImpl;
+      required final List<AlbumArtist> artists}) = _$AlbumImpl;
 
   factory _Album.fromJson(Map<String, dynamic> json) = _$AlbumImpl.fromJson;
 
   @override
   String get name;
   @override
-  @JsonKey(name: 'release_date')
   String get releaseDate;
   @override
-  @JsonKey(name: 'release_date_precision')
   String get releaseDatePrecision;
   @override
   String get type;
@@ -304,7 +296,7 @@ abstract class _Album implements Album {
   @override
   List<AlbumImage> get images;
   @override
-  List<Artist> get artists;
+  List<AlbumArtist> get artists;
 
   /// Create a copy of Album
   /// with the given fields replaced by the non-null parameter values.

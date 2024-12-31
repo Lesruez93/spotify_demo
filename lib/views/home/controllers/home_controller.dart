@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:spotify_demo/utils/utils.dart';
+import 'package:spotify_demo/views/home/models/artist/artist.dart';
 
 
 import '../models/album/album.dart';
@@ -10,7 +11,7 @@ import '../providers/home_service.dart';
 
 class HomeController extends GetxController {
   var albums = <Album>[].obs;
-
+  var artists = <Artist>[].obs;
   var isLoading = false.obs;
 
   final HomeService _albumService = HomeService();
