@@ -40,9 +40,13 @@ class HomeController extends GetxController {
             backgroundColor: Colors.red, colorText: Colors.white);
       }
     } catch (e) {
-      // Handle the error (e.g., show a message)
-      Get.snackbar('Error', 'Something went wrong',
-          backgroundColor: Colors.red, colorText: Colors.white);
+
+      print('Error: $e');
+      String? _lastError;
+      _lastError = e.toString();
+
+      //  Future.delayed to ensure snackbar displays after all operations
+
     } finally {
       isLoading(false);
     }
@@ -52,20 +56,18 @@ class HomeController extends GetxController {
     try {
       if (await checkConnectivity()) {
         isLoading(true);
-        var albumList = await _albumService.fetchArtist(value);
+        var artistList = await _albumService.fetchArtist(value);
         // Use service
 
-        albums.value = albumList;
+        artists.value = artistList;
       } else {
         Get.snackbar('Error', 'Please connect to the internet',
             backgroundColor: Colors.red, colorText: Colors.white);
       }
     } catch (e) {
-      // Handle the error (e.g., show a message)
-      print('Error: $e');
 
-      Get.snackbar('Error', 'Something went wrong',
-          backgroundColor: Colors.red, colorText: Colors.white);
+
+
     } finally {
       isLoading(false);
     }

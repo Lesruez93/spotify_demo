@@ -43,7 +43,7 @@ class HomeView extends GetView<HomeController> {
                     }
 
                     if (value != null && value.isNotEmpty) {
-                      controller.fetchAlbums(value);
+
                       // album index is 0 and artists index is 1
                       if (controller.selected.value == 1) {
                         controller.fetchArtist(value);

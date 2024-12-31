@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 
 import '../models/album/album.dart';
+import '../models/artist/artist.dart';
 
 
 
@@ -43,15 +44,15 @@ class HomeService {
     }
   }
 
-  Future<List<Album>> fetchArtist(q) async {
+  Future<List<Artist>> fetchArtist(q) async {
     try {
-      var response = await dio.get('search?q=$q&type=artists');
+      var response = await dio.get('search?q=$q&type=artist');
 
       if (response.statusCode == 200) {
-        // Extract and parse album data
+        // Extract and parse artist data
         final items = response.data['artists']['items'] as List;
         return items
-            .map((json) => Album.fromJson(json as Map<String, dynamic>))
+            .map((json) => Artist.fromJson(json as Map<String, dynamic>))
             .toList();
       } else {
         throw Exception('Failed to load artists');
