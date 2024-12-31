@@ -13,10 +13,8 @@ class DioRequestInterceptor extends Interceptor {
     try {
       var $secureStorage;
       final String accessToken = 'BQA3CcrblFbZBxkxNm7G5fQ7Qrh-hcZIs3wARulmi2lL3YbMDThnRYGtYh_i3w0quNXS2cN0CT6L9COLy3fLW1S66RTDn0xoHv6zXfTWjlSwfanRQD7dGMnyyyYZcY2w5kyfQkox8shPxVvd748eyvZKqCvpzkOj6aW4Zva2DS7s2r4BomlkDzoOIHWGa3fpw5vWI3w63X4dvuXlg7VveuuSctXGZGBmNxLWHg8eyGGKTv3jfkvc_u1qcvKCSxdzDOYbM6aYBWSmWUSm5q1y5MyOC9MkyZxwC-hNyHIpnqsSLp9pE2j_IrClN5pMgpXxlj3O6-23Q2OYl-m35eEFwBTBYe-AWpU';
-      if (accessToken != null) {
-        options.headers.addAll({'Authorization': 'Bearer $accessToken'});
-      }
-    } catch (e, s) {}
+      options.headers.addAll({'Authorization': 'Bearer $accessToken'});
+        } catch (e) {}
 
     return handler.next(options);
   }

@@ -14,7 +14,7 @@ class CustomToast {
         children: [
 
           Icon(CupertinoIcons.info_circle,
-          color: Theme.of(context).colorScheme.background),
+          color: Theme.of(context).colorScheme.surface),
           SizedBox(width: 16),
           Expanded(
             child: Column(
@@ -25,7 +25,7 @@ class CustomToast {
                   child: Text(
                     title ?? "error",
                     style: TextStyle(
-                      color: Theme.of(context).colorScheme.background,
+                      color: Theme.of(context).colorScheme.surface,
                       fontWeight: FontWeight.w500,
                       fontFamily: 'product_sans',
                     ),
@@ -33,7 +33,7 @@ class CustomToast {
                 ),
                 Text(
                   message ?? "Add your error message here",
-                  style: TextStyle(color: Theme.of(context).colorScheme.background),
+                  style: TextStyle(color: Theme.of(context).colorScheme.surface),
                 ),
               ],
             ),
@@ -56,7 +56,7 @@ class CustomToast {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Icon(CupertinoIcons.check_mark_circled,
-          color: Theme.of(context).colorScheme.background),
+          color: Theme.of(context).colorScheme.surface),
 
           SizedBox(width: 16),
           Expanded(
@@ -68,7 +68,7 @@ class CustomToast {
                   child: Text(
                     title ?? "Success",
                     style: TextStyle(
-                      color: Theme.of(context).colorScheme.background,
+                      color: Theme.of(context).colorScheme.surface,
                       fontWeight: FontWeight.w500,
                       fontFamily: 'product_sans',
                     ),
@@ -76,7 +76,7 @@ class CustomToast {
                 ),
                 Text(
                   message ?? "Add your success message here",
-                  style: TextStyle(color: Theme.of(context).colorScheme.background),
+                  style: TextStyle(color: Theme.of(context).colorScheme.surface),
                 ),
               ],
             ),
@@ -100,7 +100,7 @@ class CustomToast {
         children: [
 
           Icon(CupertinoIcons.info_circle,
-              color: Theme.of(context).colorScheme.background),
+              color: Theme.of(context).colorScheme.surface),
           SizedBox(width: 16),
           Expanded(
             child: Column(
@@ -111,7 +111,7 @@ class CustomToast {
                   child: Text(
                     title ?? "Warning",
                     style: TextStyle(
-                      color: Theme.of(context).colorScheme.background,
+                      color: Theme.of(context).colorScheme.surface,
                       fontWeight: FontWeight.w500,
                       fontFamily: 'product_sans',
                     ),
@@ -119,7 +119,7 @@ class CustomToast {
                 ),
                 Text(
                   message ?? "Add your error message here",
-                  style: TextStyle(color: Theme.of(context).colorScheme.background),
+                  style: TextStyle(color: Theme.of(context).colorScheme.surface),
                 ),
               ],
             ),

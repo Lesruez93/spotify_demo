@@ -9,7 +9,6 @@ import 'package:spotify_demo/routes/app_pages.dart';
 import 'package:spotify_demo/theme/controller/initial_binding.dart';
 import 'package:spotify_demo/theme/controller/theme_controller.dart';
 import 'package:spotify_demo/theme/theme.dart';
-import 'package:spotify_demo/utils/utils.dart';
 
 import 'injection.dart';
 
