@@ -21,10 +21,9 @@ Album _$AlbumFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$Album {
   String get name => throw _privateConstructorUsedError;
+  @JsonKey(name: 'release_date')
   String get releaseDate => throw _privateConstructorUsedError;
-  String get releaseDatePrecision => throw _privateConstructorUsedError;
   String get type => throw _privateConstructorUsedError;
-  String get uri => throw _privateConstructorUsedError;
   List<AlbumImage> get images => throw _privateConstructorUsedError;
   List<AlbumArtist> get artists => throw _privateConstructorUsedError;
 
@@ -44,10 +43,8 @@ abstract class $AlbumCopyWith<$Res> {
   @useResult
   $Res call(
       {String name,
-      String releaseDate,
-      String releaseDatePrecision,
+      @JsonKey(name: 'release_date') String releaseDate,
       String type,
-      String uri,
       List<AlbumImage> images,
       List<AlbumArtist> artists});
 }
@@ -69,9 +66,7 @@ class _$AlbumCopyWithImpl<$Res, $Val extends Album>
   $Res call({
     Object? name = null,
     Object? releaseDate = null,
-    Object? releaseDatePrecision = null,
     Object? type = null,
-    Object? uri = null,
     Object? images = null,
     Object? artists = null,
   }) {
@@ -84,17 +79,9 @@ class _$AlbumCopyWithImpl<$Res, $Val extends Album>
           ? _value.releaseDate
           : releaseDate // ignore: cast_nullable_to_non_nullable
               as String,
-      releaseDatePrecision: null == releaseDatePrecision
-          ? _value.releaseDatePrecision
-          : releaseDatePrecision // ignore: cast_nullable_to_non_nullable
-              as String,
       type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
-              as String,
-      uri: null == uri
-          ? _value.uri
-          : uri // ignore: cast_nullable_to_non_nullable
               as String,
       images: null == images
           ? _value.images
@@ -117,10 +104,8 @@ abstract class _$$AlbumImplCopyWith<$Res> implements $AlbumCopyWith<$Res> {
   @useResult
   $Res call(
       {String name,
-      String releaseDate,
-      String releaseDatePrecision,
+      @JsonKey(name: 'release_date') String releaseDate,
       String type,
-      String uri,
       List<AlbumImage> images,
       List<AlbumArtist> artists});
 }
@@ -140,9 +125,7 @@ class __$$AlbumImplCopyWithImpl<$Res>
   $Res call({
     Object? name = null,
     Object? releaseDate = null,
-    Object? releaseDatePrecision = null,
     Object? type = null,
-    Object? uri = null,
     Object? images = null,
     Object? artists = null,
   }) {
@@ -155,17 +138,9 @@ class __$$AlbumImplCopyWithImpl<$Res>
           ? _value.releaseDate
           : releaseDate // ignore: cast_nullable_to_non_nullable
               as String,
-      releaseDatePrecision: null == releaseDatePrecision
-          ? _value.releaseDatePrecision
-          : releaseDatePrecision // ignore: cast_nullable_to_non_nullable
-              as String,
       type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
-              as String,
-      uri: null == uri
-          ? _value.uri
-          : uri // ignore: cast_nullable_to_non_nullable
               as String,
       images: null == images
           ? _value._images
@@ -184,10 +159,8 @@ class __$$AlbumImplCopyWithImpl<$Res>
 class _$AlbumImpl implements _Album {
   const _$AlbumImpl(
       {required this.name,
-      required this.releaseDate,
-      required this.releaseDatePrecision,
+      @JsonKey(name: 'release_date') required this.releaseDate,
       required this.type,
-      required this.uri,
       required final List<AlbumImage> images,
       required final List<AlbumArtist> artists})
       : _images = images,
@@ -199,13 +172,10 @@ class _$AlbumImpl implements _Album {
   @override
   final String name;
   @override
+  @JsonKey(name: 'release_date')
   final String releaseDate;
   @override
-  final String releaseDatePrecision;
-  @override
   final String type;
-  @override
-  final String uri;
   final List<AlbumImage> _images;
   @override
   List<AlbumImage> get images {
@@ -224,7 +194,7 @@ class _$AlbumImpl implements _Album {
 
   @override
   String toString() {
-    return 'Album(name: $name, releaseDate: $releaseDate, releaseDatePrecision: $releaseDatePrecision, type: $type, uri: $uri, images: $images, artists: $artists)';
+    return 'Album(name: $name, releaseDate: $releaseDate, type: $type, images: $images, artists: $artists)';
   }
 
   @override
@@ -235,10 +205,7 @@ class _$AlbumImpl implements _Album {
             (identical(other.name, name) || other.name == name) &&
             (identical(other.releaseDate, releaseDate) ||
                 other.releaseDate == releaseDate) &&
-            (identical(other.releaseDatePrecision, releaseDatePrecision) ||
-                other.releaseDatePrecision == releaseDatePrecision) &&
             (identical(other.type, type) || other.type == type) &&
-            (identical(other.uri, uri) || other.uri == uri) &&
             const DeepCollectionEquality().equals(other._images, _images) &&
             const DeepCollectionEquality().equals(other._artists, _artists));
   }
@@ -249,9 +216,7 @@ class _$AlbumImpl implements _Album {
       runtimeType,
       name,
       releaseDate,
-      releaseDatePrecision,
       type,
-      uri,
       const DeepCollectionEquality().hash(_images),
       const DeepCollectionEquality().hash(_artists));
 
@@ -274,10 +239,8 @@ class _$AlbumImpl implements _Album {
 abstract class _Album implements Album {
   const factory _Album(
       {required final String name,
-      required final String releaseDate,
-      required final String releaseDatePrecision,
+      @JsonKey(name: 'release_date') required final String releaseDate,
       required final String type,
-      required final String uri,
       required final List<AlbumImage> images,
       required final List<AlbumArtist> artists}) = _$AlbumImpl;
 
@@ -286,13 +249,10 @@ abstract class _Album implements Album {
   @override
   String get name;
   @override
+  @JsonKey(name: 'release_date')
   String get releaseDate;
   @override
-  String get releaseDatePrecision;
-  @override
   String get type;
-  @override
-  String get uri;
   @override
   List<AlbumImage> get images;
   @override

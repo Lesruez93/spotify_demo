@@ -27,12 +27,14 @@ class HomeService {
   }
 
   Future<List<Album>> fetchAlbums(q) async {
+
     try {
       var response = await dio.get('search?q=$q&type=album');
 
       if (response.statusCode == 200) {
         // Extract and parse album data
         final items = response.data['albums']['items'] as List;
+
         return items
             .map((json) => Album.fromJson(json as Map<String, dynamic>))
             .toList();

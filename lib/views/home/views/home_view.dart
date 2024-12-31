@@ -40,6 +40,7 @@ class HomeView extends GetView<HomeController> {
                       Timer(const Duration(milliseconds: 200), () {
                     if (value == '') {
                       controller.albums.value = [];
+                      controller.artists.value = [];
                     }
 
                     if (value != null && value.isNotEmpty) {
@@ -77,6 +78,7 @@ class HomeView extends GetView<HomeController> {
 
                       controller.selected.value = (selected ? index : null)!;
                       controller.albums.value = [];
+                      controller.artists.value = [];
                       // clear albums list
                     },
                   );

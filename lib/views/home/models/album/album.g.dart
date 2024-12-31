@@ -8,10 +8,8 @@ part of 'album.dart';
 
 _$AlbumImpl _$$AlbumImplFromJson(Map<String, dynamic> json) => _$AlbumImpl(
       name: json['name'] as String,
-      releaseDate: json['releaseDate'] as String,
-      releaseDatePrecision: json['releaseDatePrecision'] as String,
+      releaseDate: json['release_date'] as String,
       type: json['type'] as String,
-      uri: json['uri'] as String,
       images: (json['images'] as List<dynamic>)
           .map((e) => AlbumImage.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -23,10 +21,8 @@ _$AlbumImpl _$$AlbumImplFromJson(Map<String, dynamic> json) => _$AlbumImpl(
 Map<String, dynamic> _$$AlbumImplToJson(_$AlbumImpl instance) =>
     <String, dynamic>{
       'name': instance.name,
-      'releaseDate': instance.releaseDate,
-      'releaseDatePrecision': instance.releaseDatePrecision,
+      'release_date': instance.releaseDate,
       'type': instance.type,
-      'uri': instance.uri,
       'images': instance.images,
       'artists': instance.artists,
     };

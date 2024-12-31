@@ -10,10 +10,8 @@ part 'album.g.dart';
 class Album with _$Album {
   const factory Album({
     required String name,
-    required String releaseDate,
-    required String releaseDatePrecision,
+    @JsonKey(name: 'release_date') required String releaseDate,
     required String type,
-    required String uri,
     required List<AlbumImage> images,
     required List<AlbumArtist> artists,
   }) = _Album;

@@ -22,10 +22,6 @@ AlbumArtist _$AlbumArtistFromJson(Map<String, dynamic> json) {
 mixin _$AlbumArtist {
   String get name => throw _privateConstructorUsedError;
   String get type => throw _privateConstructorUsedError;
-  String get uri => throw _privateConstructorUsedError;
-  String get id => throw _privateConstructorUsedError;
-  @JsonKey(name: 'external_urls')
-  Map<String, String> get externalUrls => throw _privateConstructorUsedError;
 
   /// Serializes this AlbumArtist to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -43,12 +39,7 @@ abstract class $AlbumArtistCopyWith<$Res> {
           AlbumArtist value, $Res Function(AlbumArtist) then) =
       _$AlbumArtistCopyWithImpl<$Res, AlbumArtist>;
   @useResult
-  $Res call(
-      {String name,
-      String type,
-      String uri,
-      String id,
-      @JsonKey(name: 'external_urls') Map<String, String> externalUrls});
+  $Res call({String name, String type});
 }
 
 /// @nodoc
@@ -68,9 +59,6 @@ class _$AlbumArtistCopyWithImpl<$Res, $Val extends AlbumArtist>
   $Res call({
     Object? name = null,
     Object? type = null,
-    Object? uri = null,
-    Object? id = null,
-    Object? externalUrls = null,
   }) {
     return _then(_value.copyWith(
       name: null == name
@@ -81,18 +69,6 @@ class _$AlbumArtistCopyWithImpl<$Res, $Val extends AlbumArtist>
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
               as String,
-      uri: null == uri
-          ? _value.uri
-          : uri // ignore: cast_nullable_to_non_nullable
-              as String,
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      externalUrls: null == externalUrls
-          ? _value.externalUrls
-          : externalUrls // ignore: cast_nullable_to_non_nullable
-              as Map<String, String>,
     ) as $Val);
   }
 }
@@ -105,12 +81,7 @@ abstract class _$$AlbumArtistImplCopyWith<$Res>
       __$$AlbumArtistImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String name,
-      String type,
-      String uri,
-      String id,
-      @JsonKey(name: 'external_urls') Map<String, String> externalUrls});
+  $Res call({String name, String type});
 }
 
 /// @nodoc
@@ -128,9 +99,6 @@ class __$$AlbumArtistImplCopyWithImpl<$Res>
   $Res call({
     Object? name = null,
     Object? type = null,
-    Object? uri = null,
-    Object? id = null,
-    Object? externalUrls = null,
   }) {
     return _then(_$AlbumArtistImpl(
       name: null == name
@@ -141,18 +109,6 @@ class __$$AlbumArtistImplCopyWithImpl<$Res>
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
               as String,
-      uri: null == uri
-          ? _value.uri
-          : uri // ignore: cast_nullable_to_non_nullable
-              as String,
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      externalUrls: null == externalUrls
-          ? _value._externalUrls
-          : externalUrls // ignore: cast_nullable_to_non_nullable
-              as Map<String, String>,
     ));
   }
 }
@@ -160,14 +116,7 @@ class __$$AlbumArtistImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$AlbumArtistImpl implements _AlbumArtist {
-  const _$AlbumArtistImpl(
-      {required this.name,
-      required this.type,
-      required this.uri,
-      required this.id,
-      @JsonKey(name: 'external_urls')
-      required final Map<String, String> externalUrls})
-      : _externalUrls = externalUrls;
+  const _$AlbumArtistImpl({required this.name, required this.type});
 
   factory _$AlbumArtistImpl.fromJson(Map<String, dynamic> json) =>
       _$$AlbumArtistImplFromJson(json);
@@ -176,22 +125,10 @@ class _$AlbumArtistImpl implements _AlbumArtist {
   final String name;
   @override
   final String type;
-  @override
-  final String uri;
-  @override
-  final String id;
-  final Map<String, String> _externalUrls;
-  @override
-  @JsonKey(name: 'external_urls')
-  Map<String, String> get externalUrls {
-    if (_externalUrls is EqualUnmodifiableMapView) return _externalUrls;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableMapView(_externalUrls);
-  }
 
   @override
   String toString() {
-    return 'AlbumArtist(name: $name, type: $type, uri: $uri, id: $id, externalUrls: $externalUrls)';
+    return 'AlbumArtist(name: $name, type: $type)';
   }
 
   @override
@@ -200,17 +137,12 @@ class _$AlbumArtistImpl implements _AlbumArtist {
         (other.runtimeType == runtimeType &&
             other is _$AlbumArtistImpl &&
             (identical(other.name, name) || other.name == name) &&
-            (identical(other.type, type) || other.type == type) &&
-            (identical(other.uri, uri) || other.uri == uri) &&
-            (identical(other.id, id) || other.id == id) &&
-            const DeepCollectionEquality()
-                .equals(other._externalUrls, _externalUrls));
+            (identical(other.type, type) || other.type == type));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, name, type, uri, id,
-      const DeepCollectionEquality().hash(_externalUrls));
+  int get hashCode => Object.hash(runtimeType, name, type);
 
   /// Create a copy of AlbumArtist
   /// with the given fields replaced by the non-null parameter values.
@@ -231,11 +163,7 @@ class _$AlbumArtistImpl implements _AlbumArtist {
 abstract class _AlbumArtist implements AlbumArtist {
   const factory _AlbumArtist(
       {required final String name,
-      required final String type,
-      required final String uri,
-      required final String id,
-      @JsonKey(name: 'external_urls')
-      required final Map<String, String> externalUrls}) = _$AlbumArtistImpl;
+      required final String type}) = _$AlbumArtistImpl;
 
   factory _AlbumArtist.fromJson(Map<String, dynamic> json) =
       _$AlbumArtistImpl.fromJson;
@@ -244,13 +172,6 @@ abstract class _AlbumArtist implements AlbumArtist {
   String get name;
   @override
   String get type;
-  @override
-  String get uri;
-  @override
-  String get id;
-  @override
-  @JsonKey(name: 'external_urls')
-  Map<String, String> get externalUrls;
 
   /// Create a copy of AlbumArtist
   /// with the given fields replaced by the non-null parameter values.

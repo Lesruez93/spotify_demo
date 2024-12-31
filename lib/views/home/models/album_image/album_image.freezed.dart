@@ -20,9 +20,7 @@ AlbumImage _$AlbumImageFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$AlbumImage {
-  int get height => throw _privateConstructorUsedError;
   String get url => throw _privateConstructorUsedError;
-  int get width => throw _privateConstructorUsedError;
 
   /// Serializes this AlbumImage to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -40,7 +38,7 @@ abstract class $AlbumImageCopyWith<$Res> {
           AlbumImage value, $Res Function(AlbumImage) then) =
       _$AlbumImageCopyWithImpl<$Res, AlbumImage>;
   @useResult
-  $Res call({int height, String url, int width});
+  $Res call({String url});
 }
 
 /// @nodoc
@@ -58,23 +56,13 @@ class _$AlbumImageCopyWithImpl<$Res, $Val extends AlbumImage>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? height = null,
     Object? url = null,
-    Object? width = null,
   }) {
     return _then(_value.copyWith(
-      height: null == height
-          ? _value.height
-          : height // ignore: cast_nullable_to_non_nullable
-              as int,
       url: null == url
           ? _value.url
           : url // ignore: cast_nullable_to_non_nullable
               as String,
-      width: null == width
-          ? _value.width
-          : width // ignore: cast_nullable_to_non_nullable
-              as int,
     ) as $Val);
   }
 }
@@ -87,7 +75,7 @@ abstract class _$$AlbumImageImplCopyWith<$Res>
       __$$AlbumImageImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int height, String url, int width});
+  $Res call({String url});
 }
 
 /// @nodoc
@@ -103,23 +91,13 @@ class __$$AlbumImageImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? height = null,
     Object? url = null,
-    Object? width = null,
   }) {
     return _then(_$AlbumImageImpl(
-      height: null == height
-          ? _value.height
-          : height // ignore: cast_nullable_to_non_nullable
-              as int,
       url: null == url
           ? _value.url
           : url // ignore: cast_nullable_to_non_nullable
               as String,
-      width: null == width
-          ? _value.width
-          : width // ignore: cast_nullable_to_non_nullable
-              as int,
     ));
   }
 }
@@ -127,22 +105,17 @@ class __$$AlbumImageImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$AlbumImageImpl implements _AlbumImage {
-  const _$AlbumImageImpl(
-      {required this.height, required this.url, required this.width});
+  const _$AlbumImageImpl({required this.url});
 
   factory _$AlbumImageImpl.fromJson(Map<String, dynamic> json) =>
       _$$AlbumImageImplFromJson(json);
 
   @override
-  final int height;
-  @override
   final String url;
-  @override
-  final int width;
 
   @override
   String toString() {
-    return 'AlbumImage(height: $height, url: $url, width: $width)';
+    return 'AlbumImage(url: $url)';
   }
 
   @override
@@ -150,14 +123,12 @@ class _$AlbumImageImpl implements _AlbumImage {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AlbumImageImpl &&
-            (identical(other.height, height) || other.height == height) &&
-            (identical(other.url, url) || other.url == url) &&
-            (identical(other.width, width) || other.width == width));
+            (identical(other.url, url) || other.url == url));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, height, url, width);
+  int get hashCode => Object.hash(runtimeType, url);
 
   /// Create a copy of AlbumImage
   /// with the given fields replaced by the non-null parameter values.
@@ -176,20 +147,13 @@ class _$AlbumImageImpl implements _AlbumImage {
 }
 
 abstract class _AlbumImage implements AlbumImage {
-  const factory _AlbumImage(
-      {required final int height,
-      required final String url,
-      required final int width}) = _$AlbumImageImpl;
+  const factory _AlbumImage({required final String url}) = _$AlbumImageImpl;
 
   factory _AlbumImage.fromJson(Map<String, dynamic> json) =
       _$AlbumImageImpl.fromJson;
 
   @override
-  int get height;
-  @override
   String get url;
-  @override
-  int get width;
 
   /// Create a copy of AlbumImage
   /// with the given fields replaced by the non-null parameter values.
