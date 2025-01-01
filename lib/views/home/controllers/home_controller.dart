@@ -75,6 +75,7 @@ class HomeController extends GetxController {
         artists.value = result.items;
       } else {
         artists.addAll(result.items);
+        print(artists.length);
       }
     } else{
         Get.snackbar('Error', 'Please connect to the internet',

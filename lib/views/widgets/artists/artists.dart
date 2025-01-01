@@ -13,7 +13,7 @@ class ArtistList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print(_controller.artists.length);
+
     return Obx(() {
       return ListView.builder(
         controller: _controller.scrollController,
