@@ -21,8 +21,10 @@ Ensure you have the following installed:
 ### Installation
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-repository-name.git
-   cd your-repository-name
+   git clone https://github.com/Lesruez93/spotify_demo
+   cd spotify_demo
+   touch .env
+   copy contents of .env_example to .env and add clientid and  secret keys
    ```
 
 2. Get the dependencies:
