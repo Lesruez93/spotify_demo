@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:spotify_demo/utils/utils.dart';
 import 'package:spotify_demo/views/home/models/album/paginate_album.dart';
 import 'package:spotify_demo/views/home/models/artist/paginate_artist.dart';
 
@@ -43,9 +44,14 @@ class HomeService {
 
   Future<PaginateAlbum> fetchPaginatedAlbums(String query, {String? nextUrl}) async {
     final url = nextUrl ?? 'search?q=$query&type=album';
+
+    if(await checkConnectivity()){
+
+    }
     final response = await dio.get(url);
 
     if (response.statusCode == 200) {
+      response.data['albums']['items'].length;
       return PaginateAlbum.fromJson(response.data['albums']);
     } else {
       throw Exception('Failed to fetch albums');

@@ -15,29 +15,16 @@ class ArtistList extends StatelessWidget {
   Widget build(BuildContext context) {
     print(_controller.artists.length);
     return Obx(() {
-      return Stack(
-        children: [
-          ListView.builder(
-            controller: _controller.scrollController,
-            itemCount: _controller.artists.length,
-            itemBuilder: (context, index) {
-              if (index < 0 || index >= _controller.artists.length) {
-                return const SizedBox.shrink();
-              }
-              final artist = _controller.artists[index];
-              return ArtistCard(artist: artist);
-            },
-          ),
-          if (_controller.isLoading.value)
-            const Positioned(
-              bottom: 16.0,
-              left: 0,
-              right: 0,
-              child: Center(
-                child: CircularProgressIndicator(),
-              ),
-            ),
-        ],
+      return ListView.builder(
+        controller: _controller.scrollController,
+        itemCount: _controller.artists.length,
+        itemBuilder: (context, index) {
+          if (index < 0 || index >= _controller.artists.length) {
+            return const SizedBox.shrink();
+          }
+          final artist = _controller.artists[index];
+          return ArtistCard(artist: artist);
+        },
       );
     });
 
@@ -64,7 +51,7 @@ class ArtistCard extends StatelessWidget {
               fit: BoxFit.cover,
               onError: (exception, stackTrace) {
                 // Handle the error (optional)
-                print('Image failed to load: $exception');
+
               },
             ),
           ),

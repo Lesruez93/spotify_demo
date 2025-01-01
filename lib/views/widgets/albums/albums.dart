@@ -15,33 +15,19 @@ class AlbumGrid extends StatelessWidget {
 
 
     return Obx(() {
-      return Stack(
-        children: [
-           GridView.builder(
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                childAspectRatio: 0.75,
-                crossAxisSpacing: 8.0,
-                mainAxisSpacing: 8.0,
-              ),
-              itemCount: _controller.albums.length,
-              controller: _controller.scrollController,
-              itemBuilder: (context, index) {
-                final album = _controller.albums[index];
-                return AlbumCard(album: album);
-              },
-            ),
-
-          if (_controller.isLoading.value)
-            const Positioned(
-              bottom: 16.0,
-              left: 0,
-              right: 0,
-              child: Center(
-                child: CircularProgressIndicator(),
-              ),
-            ),
-        ],
+    return  GridView.builder(
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 2,
+          childAspectRatio: 0.75,
+          crossAxisSpacing: 8.0,
+          mainAxisSpacing: 8.0,
+        ),
+        itemCount: _controller.albums.length,
+        controller: _controller.scrollController,
+        itemBuilder: (context, index) {
+          final album = _controller.albums[index];
+          return AlbumCard(album: album);
+        },
       );
     });
   }

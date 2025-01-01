@@ -37,13 +37,13 @@ class HomeView extends GetView<HomeController> {
               margin: EdgeInsets.only(top: 17),
               child: SearchField(
                 onChanged: (String? value) {
-                  print(value);
+
 
                   if (controller.debounce?.isActive ?? false)
                     controller.debounce!.cancel();
                   //Search delay
                   controller.debounce =
-                      Timer(const Duration(milliseconds: 200), () {
+                      Timer(const Duration(milliseconds: 500), () {
                     if (value == '') {
                       controller.albums.value = [];
                       controller.artists.value = [];
@@ -85,7 +85,10 @@ class HomeView extends GetView<HomeController> {
                       controller.selected.value = (selected ? index : null)!;
                       controller.albums.value = [];
                       controller.artists.value = [];
+
+                      controller.nextUrl.value = null;
                       controller.hasMore.value = false;
+
 
                       // clear albums list
                     },
@@ -101,6 +104,7 @@ class HomeView extends GetView<HomeController> {
               }
 
               return controller.selected.value == 0
+
                   ? AlbumGrid()
                   : ArtistList();
             }),
