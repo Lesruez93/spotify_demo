@@ -1,9 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:spotify_demo/views/home/models/album/paginate_album.dart';
-
-import '../models/album/album.dart';
-import '../models/artist/artist.dart';
+import 'package:spotify_demo/views/home/models/artist/paginate_artist.dart';
 
 
 
@@ -30,8 +28,21 @@ class HomeService {
 
 
 
+  Future<PaginateArtist> fetchPaginatedArtist(String query, {String? nextUrl}) async {
+    final url = nextUrl ?? 'search?q=$query&type=artist';
+    final response = await dio.get(url);
+
+    if (response.statusCode == 200) {
+      return PaginateArtist.fromJson(response.data['artists']);
+    } else {
+      throw Exception('Failed to fetch albums');
+    }
+  }
+
+
+
   Future<PaginateAlbum> fetchPaginatedAlbums(String query, {String? nextUrl}) async {
-    final url = nextUrl ?? '/search?q=$query&type=album';
+    final url = nextUrl ?? 'search?q=$query&type=album';
     final response = await dio.get(url);
 
     if (response.statusCode == 200) {
@@ -41,21 +52,5 @@ class HomeService {
     }
   }
 
-  Future<List<Artist>> fetchArtist(q) async {
-    try {
-      var response = await dio.get('search?q=$q&type=artist');
 
-      if (response.statusCode == 200) {
-        // Extract and parse artist data
-        final items = response.data['artists']['items'] as List;
-        return items
-            .map((json) => Artist.fromJson(json as Map<String, dynamic>))
-            .toList();
-      } else {
-        throw Exception('Failed to load artists');
-      }
-    } catch (e) {
-      throw Exception('Error fetching artists: $e');
-    }
-  }
 }

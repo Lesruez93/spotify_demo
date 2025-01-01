@@ -42,7 +42,7 @@ void main() {
       expect(homeController.albums.length, 2);
       expect(homeController.albums[0].name, 'Album 1');
       expect(homeController.hasMore.value, false);
-      verify(mockHomeService.fetchPaginatedAlbums('query')).called(1);
+      verify(mockHomeService.fetchPaginatedAlbums('query', nextUrl: '')).called(1);
     });
 
     test('should fetch artists and update the artists list', () async {
@@ -64,7 +64,7 @@ void main() {
       expect(homeController.artists.length, 2);
       expect(homeController.artists[0].name, 'Artist 1');
       expect(homeController.hasMore.value, false);
-      verify(mockHomeService.fetchPaginatedArtist('query')).called(1);
+      verify(mockHomeService.fetchPaginatedArtist('query', nextUrl: '')).called(1);
     });
 
     test('should not fetch data if there is no next URL', () async {
@@ -89,4 +89,9 @@ void main() {
 
 extension on HomeController {
   set _albumService(_albumService) {}
+}
+class MockHomeService extends Mock  {
+  fetchPaginatedAlbums(any, {required nextUrl}) {}
+
+  fetchPaginatedArtist(any, {required nextUrl}) {}
 }

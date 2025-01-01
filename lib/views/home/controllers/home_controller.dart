@@ -7,13 +7,13 @@ import 'package:spotify_demo/views/home/models/album/paginate_album.dart';
 import 'package:spotify_demo/views/home/models/artist/artist.dart';
 
 import '../models/album/album.dart';
+import '../models/artist/paginate_artist.dart';
 import '../providers/home_service.dart';
 
 class HomeController extends GetxController {
-  var album = <PaginateAlbum>{}.obs;
-  var artists = <Artist>[].obs;
 
   final albums = RxList<Album>();
+  final artists = RxList<Artist>();
   final hasMore = RxBool(false);
   final nextUrl = Rx<String?>(null);
   var isLoading = false.obs;
@@ -43,10 +43,10 @@ class HomeController extends GetxController {
       nextUrl.value = result.next;
 
       if (nextUrl.value == null) {
-        // If this is the first fetch, replace the entire list.
+
         albums.value = result.items;
       } else {
-        // If this is a paginated fetch, append new items.
+
         albums.addAll(result.items);
       }
     } catch (e) {
@@ -56,24 +56,26 @@ class HomeController extends GetxController {
   }
 
 
-
-  void fetchArtist(value) async {
+  fetchArtist(String query) async {
     try {
-      if (await checkConnectivity()) {
-        isLoading(true);
-        var artistList = await _albumService.fetchArtist(value);
-        // Use service
+      final result = await _albumService.fetchPaginatedArtist(query, nextUrl: nextUrl.value);
 
-        artists.value = artistList;
+      hasMore.value = result.next != null;
+      nextUrl.value = result.next;
+
+      if (nextUrl.value == null) {
+
+        artists.value = result.items;
       } else {
-        Get.snackbar('Error', 'Please connect to the internet',
-            backgroundColor: Colors.red, colorText: Colors.white);
+
+        artists.addAll(result.items);
       }
     } catch (e) {
-    } finally {
-      isLoading(false);
+      // Handle the error (e.g., log it or show a message to the user).
+      print('Error fetching artist: $e');
     }
   }
+
 
   void _onScroll() {
     if (scrollController.position.pixels ==
