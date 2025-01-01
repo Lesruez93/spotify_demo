@@ -1,9 +1,10 @@
 import 'dart:convert';
 import 'package:dio/dio.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 class SpotifyApi {
-  final String clientId = 'c0161aa4e8b144a0ac31ac40494e0de4'; // Replace with your client ID
-  final String clientSecret = '0ad6f4c4203843e1b3537816bb8d044f'; // Replace with your client secret
+  final String clientId = dotenv.env['CLIENT_ID'] ?? '';
+  final String clientSecret = dotenv.env['CLIENT_SECRET'] ?? '';
   final Dio dio = Dio();
 
   Future<String?> getAccessToken() async {

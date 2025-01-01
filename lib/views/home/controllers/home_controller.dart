@@ -35,7 +35,7 @@ class HomeController extends GetxController {
   }
 
   fetchAlbums(String query) async {
-    print(nextUrl);
+
     try {
       if(await checkConnectivity()){
         final result = await _albumService.fetchPaginatedAlbums(query,
@@ -75,7 +75,7 @@ class HomeController extends GetxController {
         artists.value = result.items;
       } else {
         artists.addAll(result.items);
-        print(artists.length);
+
       }
     } else{
         Get.snackbar('Error', 'Please connect to the internet',

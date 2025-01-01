@@ -45,6 +45,7 @@ dependencies:
   json_annotation: ^4.9.0
   connectivity_plus: ^6.0.1
   dio_cache_interceptor: ^3.5.0
+  flutter_dotenv: ^5.2.1
 
 
 
@@ -74,6 +75,7 @@ flutter:
   assets:
     - assets/icon/
     - assets/fonts/
+    - .env
   fonts:
     - family: product_sans
       fonts:
