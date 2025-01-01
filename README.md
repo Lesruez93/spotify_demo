@@ -88,4 +88,4 @@ Using the Bloc Library would have been overkill given the project's scope.
 
 ---
 
-<img src="https://github.com/Lesruez93/spotify_demo/blob/f16f347d91de15aa1e0a787e378695120b7050d4/assets/screen%20demo.gif?raw=true" height="300">
+<img src="https://github.com/Lesruez93/spotify_demo/blob/f16f347d91de15aa1e0a787e378695120b7050d4/assets/screen%20demo.gif?raw=true" >
