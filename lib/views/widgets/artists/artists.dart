@@ -13,6 +13,7 @@ class ArtistList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print(_controller.artists.length);
     return Obx(() {
       return Stack(
         children: [
@@ -20,6 +21,9 @@ class ArtistList extends StatelessWidget {
             controller: _controller.scrollController,
             itemCount: _controller.artists.length,
             itemBuilder: (context, index) {
+              if (index < 0 || index >= _controller.artists.length) {
+                return const SizedBox.shrink();
+              }
               final artist = _controller.artists[index];
               return ArtistCard(artist: artist);
             },
@@ -36,6 +40,7 @@ class ArtistList extends StatelessWidget {
         ],
       );
     });
+
   }
 }
 

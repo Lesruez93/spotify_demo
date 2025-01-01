@@ -2,16 +2,14 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:spotify_demo/utils/utils.dart';
-import 'package:spotify_demo/views/home/models/album/paginate_album.dart';
+
 import 'package:spotify_demo/views/home/models/artist/artist.dart';
 
 import '../models/album/album.dart';
-import '../models/artist/paginate_artist.dart';
+
 import '../providers/home_service.dart';
 
 class HomeController extends GetxController {
-
   final albums = RxList<Album>();
   final artists = RxList<Artist>();
   final hasMore = RxBool(false);
@@ -34,19 +32,17 @@ class HomeController extends GetxController {
     super.onInit();
   }
 
-
   fetchAlbums(String query) async {
     try {
-      final result = await _albumService.fetchPaginatedAlbums(query, nextUrl: nextUrl.value);
+      final result = await _albumService.fetchPaginatedAlbums(query,
+          nextUrl: nextUrl.value);
 
       hasMore.value = result.next != null;
       nextUrl.value = result.next;
 
       if (nextUrl.value == null) {
-
         albums.value = result.items;
       } else {
-
         albums.addAll(result.items);
       }
     } catch (e) {
@@ -55,19 +51,17 @@ class HomeController extends GetxController {
     }
   }
 
-
   fetchArtist(String query) async {
     try {
-      final result = await _albumService.fetchPaginatedArtist(query, nextUrl: nextUrl.value);
+      final result = await _albumService.fetchPaginatedArtist(query,
+          nextUrl: nextUrl.value);
 
       hasMore.value = result.next != null;
       nextUrl.value = result.next;
 
       if (nextUrl.value == null) {
-
         artists.value = result.items;
       } else {
-
         artists.addAll(result.items);
       }
     } catch (e) {
@@ -75,7 +69,6 @@ class HomeController extends GetxController {
       print('Error fetching artist: $e');
     }
   }
-
 
   void _onScroll() {
     if (scrollController.position.pixels ==

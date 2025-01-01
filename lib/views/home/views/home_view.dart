@@ -85,6 +85,8 @@ class HomeView extends GetView<HomeController> {
                       controller.selected.value = (selected ? index : null)!;
                       controller.albums.value = [];
                       controller.artists.value = [];
+                      controller.hasMore.value = false;
+
                       // clear albums list
                     },
                   );
