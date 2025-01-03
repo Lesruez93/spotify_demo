@@ -91,7 +91,7 @@ class AlbumCard extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 8.0),
             child: Text(
-              album.releaseDate,
+              '${album.type} . ${album.releaseDate}',
               style: TextStyle(
                 fontSize: 14,
                 color: Colors.grey[700],
